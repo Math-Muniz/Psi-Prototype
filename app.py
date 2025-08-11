@@ -10,7 +10,7 @@ from prompts import prompt_pre_contemplacao, prompt_contemplacao, prompt_avaliad
 
 # --- Configuração Inicial e Carregamento de Chaves ---
 load_dotenv()
-
+LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")
 # --- Configuração do LLM ---
 llm = ChatGroq(
     model="llama-3.3-70b-versatile",
@@ -206,3 +206,4 @@ if prompt := st.chat_input("Digite sua resposta aqui..."):
     
 
     st.rerun()
+
