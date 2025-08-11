@@ -63,7 +63,7 @@ def get_compiled_agent():
 
 agent = get_compiled_agent()
 
-# --- Função de Avaliação (Lógica de Negócio) ---
+# --- Função de Avaliação ---
 def evaluate_user_turn(state: AgentState) -> Set[str]:
     """Chama o LLM para avaliar a última fala do usuário."""
     conversation_text = "\n".join([f"{msg.type}: {msg.content}" for msg in state['messages']])
@@ -99,7 +99,7 @@ if "current_state" not in st.session_state:
 
 # --- Painel Lateral (Sidebar) ---
 with st.sidebar:
-    # --- PAINEL DE ANÁLISE (MOVIDO PARA CIMA) ---
+    # --- PAINEL DE ANÁLISE ---
     st.header("📊 Análise da Sessão")
     stage = st.session_state.current_state["stage"]
     tecnicas = st.session_state.current_state["tecnicas_utilizadas"]
@@ -120,7 +120,7 @@ with st.sidebar:
 
     st.divider()
 
-    # --- PAINEL DE OPÇÕES (MOVIDO PARA BAIXO E MODIFICADO) ---
+    # --- PAINEL DE OPÇÕES ---
     st.header("⚙️ Opções")
 
     # Função para formatar o log para download
@@ -204,4 +204,5 @@ if prompt := st.chat_input("Digite sua resposta aqui..."):
     # Adiciona a resposta da IA ao log detalhado
     st.session_state.detailed_log.append({"message": ai_response, "evaluation": None})
     
+
     st.rerun()
